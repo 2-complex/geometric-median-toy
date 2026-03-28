@@ -1,6 +1,7 @@
 
 
 var handleColor = "rgba(0, 255, 50, 1.0)";
+var handleFill = "rgba(0, 255, 50, 0.5)";
 
 function Handle(position)
 {
@@ -10,7 +11,7 @@ function Handle(position)
 
 Handle.prototype = inherit([Draggable]);
 
-Handle.RADIUS = 4;
+Handle.RADIUS = 8;
 
 Handle.prototype.clickIn = function(screenloc)
 {
@@ -33,8 +34,8 @@ Handle.prototype.draw = function(ctx, info)
     var w = Handle.RADIUS;
     var h = Handle.RADIUS;
 
-    ctx.fillStyle = handleColor;
+    ctx.fillStyle = handleFill;
     ctx.strokeStyle = handleColor;
-    ctx.strokeRect(x-w, y-w, 2*w, 2*h);
+    ctx.fillRect(x-w, y-w, 2*w, 2*h);
 }
 

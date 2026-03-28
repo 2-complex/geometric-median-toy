@@ -9,7 +9,7 @@ Guess = function(points)
 
 Guess.prototype = inherit([Draggable]);
 
-Guess.RADIUS = 4;
+Guess.RADIUS = 10;
 Guess.DRAW_NUMBERS = false;
 
 Guess.prototype.clickIn = function(screenloc)
@@ -19,8 +19,8 @@ Guess.prototype.clickIn = function(screenloc)
     var dx = screenloc[0] - canvasLoc[0];
     var dy = screenloc[1] - canvasLoc[1];
 
-    return dx < Handle.RADIUS && dx > -Handle.RADIUS &&
-           dy < Handle.RADIUS && dy > -Handle.RADIUS;
+    return dx < Guess.RADIUS && dx > -Guess.RADIUS &&
+           dy < Guess.RADIUS && dy > -Guess.RADIUS;
 }
 
 Guess.prototype.draw = function(ctx, info)
@@ -45,7 +45,7 @@ Guess.prototype.draw = function(ctx, info)
         }
 
         ctx.beginPath();
-        ctx.ellipse(a[0], a[1], 6, 6, 0, 0, 2 * Math.PI); 
+        ctx.ellipse(a[0], a[1], Guess.RADIUS, Guess.RADIUS, 0, 0, 2 * Math.PI);
         ctx.fill();
         ctx.closePath();
 

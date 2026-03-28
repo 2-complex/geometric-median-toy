@@ -4,11 +4,13 @@ Centroid = function(points)
     this.points = points;
 }
 
+Centroid.RADIUS = 20;
+
 Centroid.prototype.draw = function(ctx, info)
 {
     var convert = info.convert;
     ctx.beginPath();
-    ctx.lineWidth = 2;
+    ctx.lineWidth = 3;
     ctx.strokeStyle = "rgba(230, 0, 230, 1.0)";
 
     var n = this.points.length;
@@ -29,10 +31,10 @@ Centroid.prototype.draw = function(ctx, info)
         avg = convert(avg);
 
         ctx.beginPath();
-        ctx.moveTo(avg[0]-10, avg[1]);
-        ctx.lineTo(avg[0]+10, avg[1]);
-        ctx.moveTo(avg[0], avg[1]-10);
-        ctx.lineTo(avg[0], avg[1]+10);
+        ctx.moveTo(avg[0]-Centroid.RADIUS, avg[1]);
+        ctx.lineTo(avg[0]+Centroid.RADIUS, avg[1]);
+        ctx.moveTo(avg[0], avg[1]-Centroid.RADIUS);
+        ctx.lineTo(avg[0], avg[1]+Centroid.RADIUS);
         ctx.stroke();
     }
 }
