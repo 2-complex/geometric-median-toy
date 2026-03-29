@@ -34,6 +34,8 @@ Draggable.prototype.startDrag = function(event)
     var v = canvasToWorld([event.offsetX, event.offsetY]);
     this.dragDiff[0] = this.position[0] - v[0];
     this.dragDiff[1] = this.position[1] - v[1];
+
+    this.isDragging = true;
 }
 
 Draggable.prototype.drag = function(event)
@@ -50,4 +52,6 @@ Draggable.prototype.finishDrag = function(event)
     undoManager.push(
         Draggable.prototype.setPosition, this, this.startingPosition,
         Draggable.prototype.setPosition, this, [this.position[0], this.position[1]]);
+
+    this.isDragging = false;
 }

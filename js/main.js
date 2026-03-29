@@ -377,13 +377,10 @@ function keyUp()
 
 setInterval(function()
 {
-    if (!mouseIsDown)
+    for (var i = 0; i < 10; i++)
     {
-        for (var i = 0; i < 10; i++)
-        {
-            pointsDocument.step();
-        }
-        drawScreen();
+        pointsDocument.step();
     }
+    drawScreen();
 }, 50);
 
